@@ -6,6 +6,7 @@ import LoginAdmin from "./componenets/loginadmin";
 import AdminDashboard from "./componenets/AdminDashboard";
 import Partner from "./routes/Partner";
 import Message from "./routes/message";
+import Passwords from "./componenets/passwords";
 const App = () => {
   return (
     <React.StrictMode>
@@ -13,6 +14,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<LoginAdmin />} />
           <Route path="/admindashboard" element={<AdminDashboard />} />
+          <Route path="/passwords" element={<Passwords />} />
           <Route path="/partner" element={<Partner />} />
           <Route path="/Message" element={<Message />} />
 
