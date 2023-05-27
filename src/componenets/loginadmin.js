@@ -14,7 +14,7 @@ const loginadmin = () => {
       </nav>
       <div className="flex justify-center items-center mt-3">
         <div className="w-96 bg-white rounded-lg shadow-lg border-2 border-gray-900 dark:shadow-lg p-8 mt-6">
-          <h2 className="text-3xl font-bold mb-4 text-center">Admin Login [Department Wise]</h2>
+          <h2 className="text-3xl font-bold mb-4 text-center">Admin Login </h2>
           <form className="space-y-4">
             <div>
               <label className="block font-medium mb-2" htmlFor="email">
