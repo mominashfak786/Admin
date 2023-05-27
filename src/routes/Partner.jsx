@@ -12,6 +12,19 @@ const Partner = () => {
 
   const [selectedPaymentOption, setSelectedPaymentOption] = useState("");
 
+  const [tableData, setTableData] = useState([
+    { date: "", leadName: "", solutionType: "", premisesCategory: "" },
+  ]);
+
+  const [tableDatas, setTableDatas] = useState([
+    {
+      subscriptionDate: "",
+      leadName: "",
+      solutionType: "",
+      commissionAmount: "",
+      paymentMode: "",
+    },
+  ]);
   const handleClick = (text) => {
     setActiveSelection(text);
   };
@@ -143,6 +156,25 @@ const Partner = () => {
       setShowTable(true);
     };
 
+    const handleInputChange = (event, index, field) => {
+      const { value } = event.target;
+      const updatedData = [...tableData];
+      updatedData[index][field] = value;
+      setTableData(updatedData);
+    };
+
+    const addRow = () => {
+      setTableData([
+        ...tableData,
+        { date: "", leadName: "", solutionType: "", premisesCategory: "" },
+      ]);
+    };
+
+    const handleSubmit = () => {
+      // Perform any necessary actions with the submitted table data
+      console.log(tableData);
+    };
+
     return (
       <div>
         <div className="block w-full mb-5">
@@ -187,36 +219,81 @@ const Partner = () => {
           )}
 
           {showTable && (
-            <div className="mt-5">
-              <table className="table-auto border border-gray-200">
-                <thead>
-                  <tr>
-                    <th className="px-4 py-2">Date</th>
-                    <th className="px-4 py-2">Name of the lead</th>
-                    <th className="px-4 py-2">Solution Type</th>
-                    <th className="px-4 py-2">Category of Premises</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="border px-4 py-2">-</td>
-                    <td className="border px-4 py-2">-</td>
-                    <td className="border px-4 py-2">-</td>
-                    <td className="border px-4 py-2">-</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            <>
+              <div className="mt-5 py-6 ">
+                <table className="block table-auto mt-6  border-2 border-gray-900">
+                  <thead>
+                    <tr>
+                      <th className="px-4 py-2">Date</th>
+                      <th className="px-4 py-2">Name of the lead</th>
+                      <th className="px-4 py-2">Solution Type</th>
+                      <th className="px-4 py-2">Category of Premises</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {tableData.map((row, index) => (
+                      <tr key={index}>
+                        <td className="border px-4 py-2">
+                          <input
+                            type="text"
+                            value={row.date}
+                            onChange={(event) =>
+                              handleInputChange(event, index, "date")
+                            }
+                            className="w-full"
+                          />
+                        </td>
+                        <td className="border px-4 py-2">
+                          <input
+                            type="text"
+                            value={row.leadName}
+                            onChange={(event) =>
+                              handleInputChange(event, index, "leadName")
+                            }
+                            className="w-full"
+                          />
+                        </td>
+                        <td className="border px-4 py-2">
+                          <input
+                            type="text"
+                            value={row.solutionType}
+                            onChange={(event) =>
+                              handleInputChange(event, index, "solutionType")
+                            }
+                            className="w-full"
+                          />
+                        </td>
+                        <td className="border px-4 py-2">
+                          <input
+                            type="text"
+                            value={row.premisesCategory}
+                            onChange={(event) =>
+                              handleInputChange(
+                                event,
+                                index,
+                                "premisesCategory"
+                              )
+                            }
+                            className="w-full"
+                          />
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div className="flex justify-center my-4 items-center">
+                <button
+                  type="button"
+                  onClick={handleSubmit}
+                  className="text-white bg-blue-700 hover:bg-blue-800 mt-5 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                >
+                  Submit
+                </button>
+              </div>
+            </>
           )}
         </div>
-        {showTable && (
-          <button
-            type="button"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-          >
-            Save
-          </button>
-        )}
       </div>
     );
   };
@@ -231,6 +308,30 @@ const Partner = () => {
     const handleReferralIdChange = (event) => {
       setReferralId(event.target.value);
       setShowTable(true);
+    };
+    const handleInputChange = (event, index, field) => {
+      const { value } = event.target;
+      const updatedData = [...tableData];
+      updatedData[index][field] = value;
+      setTableDatas(updatedData);
+    };
+
+    const addRow = () => {
+      setTableDatas([
+        ...tableData,
+        {
+          subscriptionDate: "",
+          leadName: "",
+          solutionType: "",
+          commissionAmount: "",
+          paymentMode: "",
+        },
+      ]);
+    };
+
+    const handleSubmit = () => {
+      // Perform any necessary actions with the submitted table data
+      console.log(tableData);
     };
 
     return (
@@ -277,39 +378,96 @@ const Partner = () => {
           )}
 
           {showTable && (
-            <div className="mt-5">
-              <table className="table-auto border border-gray-200">
-                <thead>
-                  <tr>
-                    <th className="px-4 py-2">Date of Subscription</th>
-                    <th className="px-4 py-2">Name of the Lead</th>
-                    <th className="px-4 py-2">Solution Type</th>
-                    <th className="px-4 py-2">Commission Amount</th>
-                    <th className="px-4 py-2">Payment Mode</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="border px-4 py-2">-</td>
-                    <td className="border px-4 py-2">-</td>
-                    <td className="border px-4 py-2">-</td>
-                    <td className="border px-4 py-2">-</td>
-                    <td className="border px-4 py-2">-</td>
-                  </tr>
-                  {/* Add table rows with actual data */}
-                </tbody>
-              </table>
-            </div>
+            <>
+              <div className="mt-5">
+                <table className="table-auto border border-gray-200">
+                  <thead>
+                    <tr>
+                      <th className="px-4 py-2"> Date</th>
+                      <th className="px-4 py-2">Lead Name</th>
+                      <th className="px-4 py-2">Solution Type</th>
+                      <th className="px-4 py-2">Commission Amount</th>
+                      <th className="px-4 py-2">Payment Mode</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {tableDatas.map((row, index) => (
+                      <tr key={index}>
+                        <td className="border px-4 py-2">
+                          <input
+                            type="text"
+                            value={row.subscriptionDate}
+                            onChange={(event) =>
+                              handleInputChange(
+                                event,
+                                index,
+                                "subscriptionDate"
+                              )
+                            }
+                            className="w-full"
+                          />
+                        </td>
+                        <td className="border px-4 py-2">
+                          <input
+                            type="text"
+                            value={row.leadName}
+                            onChange={(event) =>
+                              handleInputChange(event, index, "leadName")
+                            }
+                            className="w-full"
+                          />
+                        </td>
+                        <td className="border px-4 py-2">
+                          <input
+                            type="text"
+                            value={row.solutionType}
+                            onChange={(event) =>
+                              handleInputChange(event, index, "solutionType")
+                            }
+                            className="w-full"
+                          />
+                        </td>
+                        <td className="border px-4 py-2">
+                          <input
+                            type="text"
+                            value={row.commissionAmount}
+                            onChange={(event) =>
+                              handleInputChange(
+                                event,
+                                index,
+                                "commissionAmount"
+                              )
+                            }
+                            className="w-full"
+                          />
+                        </td>
+                        <td className="border px-4 py-2">
+                          <input
+                            type="text"
+                            value={row.paymentMode}
+                            onChange={(event) =>
+                              handleInputChange(event, index, "paymentMode")
+                            }
+                            className="w-full"
+                          />
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div className="flex justify-center my-4 items-center">
+                <button
+                  type="button"
+                  onClick={handleSubmit}
+                  className="text-white bg-blue-700 hover:bg-blue-800 mt-5 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                >
+                  Submit
+                </button>
+              </div>
+            </>
           )}
         </div>
-        {showTable && (
-          <button
-            type="button"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-          >
-            Save
-          </button>
-        )}
       </div>
     );
   };
@@ -463,11 +621,9 @@ const Partner = () => {
                   Payment Link:
                 </h2>
                 <p>
-                  <strong>Link:</strong> https://paymentlink.com/abcd1234
+                  <strong>Link:</strong> https://helloWorld!.com/
                 </p>
-                <p>
-                  <strong>Expiration Date:</strong> 2023-06-30
-                </p>
+               
               </div>
             </div>
           )}
