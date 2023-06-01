@@ -37,7 +37,7 @@ const Partner = () => {
             Welcome to the Partner Dashboard
           </div>
           <div className="text-xl text-center  text-blue-900 ">
-            <Link to="/Message">Click here for Message Feature</Link>
+            <Link to="/message">Click here for Message Feature</Link>
           </div>
         </div>
       </>
@@ -161,13 +161,6 @@ const Partner = () => {
       const updatedData = [...tableData];
       updatedData[index][field] = value;
       setTableData(updatedData);
-    };
-
-    const addRow = () => {
-      setTableData([
-        ...tableData,
-        { date: "", leadName: "", solutionType: "", premisesCategory: "" },
-      ]);
     };
 
     const handleSubmit = () => {
@@ -314,19 +307,6 @@ const Partner = () => {
       const updatedData = [...tableData];
       updatedData[index][field] = value;
       setTableDatas(updatedData);
-    };
-
-    const addRow = () => {
-      setTableDatas([
-        ...tableData,
-        {
-          subscriptionDate: "",
-          leadName: "",
-          solutionType: "",
-          commissionAmount: "",
-          paymentMode: "",
-        },
-      ]);
     };
 
     const handleSubmit = () => {
@@ -490,11 +470,6 @@ const Partner = () => {
       setSelectedPaymentOption(event.target.value);
     };
 
-    const handleSave = () => {
-      // Perform saving logic here
-      console.log("Data saved");
-    };
-
     return (
       <div>
         <div className="block w-full mb-5">
@@ -623,7 +598,6 @@ const Partner = () => {
                 <p>
                   <strong>Link:</strong> https://helloWorld!.com/
                 </p>
-               
               </div>
             </div>
           )}

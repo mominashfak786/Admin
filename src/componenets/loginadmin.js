@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import '../styles/loginadmin.css';
-import Logoof from "../assets/logo (1).f830610ede8618ccafa5.png"
+import "../styles/loginadmin.css";
+import Logoof from "../assets/logo (1).f830610ede8618ccafa5.png";
 const loginadmin = () => {
   return (
     <>
       <nav className="border bg-white shadow-lg">
         <div className="max-w-screen-xl flex shadow-lg flex-wrap items-center justify-between mx-auto p-4">
           <div className="flex items-center">
-          <img src={Logoof} className="sizeimg" alt="" />
+            <img src={Logoof} className="sizeimg" alt="" />
           </div>
         </div>
       </nav>
